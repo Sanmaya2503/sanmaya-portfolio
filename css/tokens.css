@@ -1,0 +1,48 @@
+/* ══════════════════════════════════════════
+   DESIGN TOKENS — edit here to retheme
+   ══════════════════════════════════════════ */
+
+:root {
+  /* ── Palette ── */
+  --bg:        #0A0F1E;   /* page background            */
+  --bg2:       #0D1526;   /* alternate section bg       */
+  --bg3:       #111827;   /* card / terminal header bg  */
+  --card:      #111827;   /* card surface               */
+
+  --cyan:      #00D4FF;   /* primary accent             */
+  --violet:    #7C3AED;   /* secondary accent           */
+  --green:     #00FF88;   /* highlight / success        */
+  --amber:     #f59e0b;   /* warm accent                */
+
+  --text:      #F0F4FF;   /* primary text               */
+  --muted:     #8892A4;   /* secondary / subdued text   */
+  --border:    rgba(0, 212, 255, 0.14);
+
+  /* ── Typography ── */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* ── Spacing scale ── */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-20: 80px;
+  --sp-24: 96px;
+
+  /* ── Radius ── */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* ── Transitions ── */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition: 0.25s var(--ease-out-expo);
+}

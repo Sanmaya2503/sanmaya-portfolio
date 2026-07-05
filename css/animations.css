@@ -1,0 +1,68 @@
+/* ══════════════════════════════════════════
+   ANIMATIONS
+   ══════════════════════════════════════════ */
+
+/* ── Keyframes ── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(1.2); }
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-20px); }
+}
+
+/* ── Applied ── */
+.scroll-line {
+  animation: scrollPulse 1.8s ease-in-out infinite;
+}
+
+.status-dot {
+  animation: statusPulse 2s infinite;
+}
+
+.orb-1 { animation: floatOrb 8s ease-in-out infinite; }
+.orb-2 { animation: floatOrb 10s ease-in-out infinite reverse; }
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition-delay: var(--delay, 0s);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .skill-fill,
+  .ring-prog,
+  .spark-bar::after,
+  .orb-1, .orb-2,
+  .scroll-line,
+  .status-dot {
+    animation: none;
+    transition: none;
+  }
+}
