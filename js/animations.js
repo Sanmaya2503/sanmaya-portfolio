@@ -115,25 +115,31 @@
     requestAnimationFrame(step);
   }
 
-  /* ── 6. Spark bars ── */
-  let sparksRun = false;
 
-  function runSparks() {
-    if (sparksRun) return;
-    const bars = document.querySelectorAll('.spark-bar');
-    if (!bars.length) return;
-    if (!isInView(bars[0])) return;
-    sparksRun = true;
-    bars.forEach((bar) => bar.classList.add('animated'));
+
+
+  /* ── Learning bar fill ── */
+  let learningRun = false;
+
+  function runLearningBars() {
+    if (learningRun) return;
+    const fills = document.querySelectorAll('.learn-fill');
+    if (!fills.length) return;
+    if (!isInView(fills[0])) return;
+    learningRun = true;
+    fills.forEach((fill) => {
+      fill.style.width = fill.dataset.width + '%';
+    });
   }
+
 
   /* ── Master scroll handler ── */
   function onScroll() {
     runCounters();
+    runLearningBars();
     runSkillBars();
     runRings();
     runRadar();
-    runSparks();
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });

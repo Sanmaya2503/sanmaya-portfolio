@@ -1,7 +1,7 @@
 # Sanmaya Pandua — Portfolio
 
 > Data Scientist · ML Engineer ·Data Analytics Professional  
-> Live at: `https://sanmaya2503.github.io/sanmaya-portfolio`
+> Live at: https://sanmaya2503.github.io/sanmaya-portfolio/
 
 ---
 

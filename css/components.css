@@ -744,3 +744,498 @@ h1.hero-name {
 
 /* ── Accent helper ── */
 .accent { color: var(--cyan); }
+
+
+
+
+
+/* ══════════════════════════════════════════
+    PROFILE CARD SECTION
+   ══════════════════════════════════════════ */
+
+#profile-card {
+  padding: 0 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.profile-card-inner {
+  display: flex;
+  align-items: center;
+  gap: 52px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 40px 52px;
+  position: relative;
+  overflow: hidden;
+  /* Glowing top border */
+  box-shadow:
+    0 0 0 1px rgba(0,212,255,0.08),
+    0 24px 60px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* Animated gradient line across top of card */
+.profile-card-inner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent,
+    var(--violet),
+    var(--cyan),
+    var(--green),
+    var(--cyan),
+    var(--violet),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 4s linear infinite;
+}
+
+/* Faint grid pattern inside card */
+.profile-card-inner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Photo frame ── */
+.profile-photo-wrap {
+  position: relative;
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+.profile-photo-frame {
+  width: 180px;
+  height: 180px;
+  border-radius: 20px;
+  position: relative;
+  /* Spinning dashed border effect */
+}
+
+/* Outer spinning ring */
+.profile-photo-frame::before {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 24px;
+  background: conic-gradient(
+    from 0deg,
+    var(--cyan),
+    var(--violet),
+    var(--green),
+    var(--cyan)
+  );
+  animation: spinRing 5s linear infinite;
+  z-index: -1;
+}
+
+/* Gap between ring and photo */
+.profile-photo-frame::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 22px;
+  background: var(--card);
+  z-index: -1;
+}
+
+@keyframes spinRing {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.profile-photo-frame img {
+  width: 180px;
+  height: 180px;
+  border-radius: 18px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+/* Corner brackets decoration */
+.corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  z-index: 3;
+}
+.corner-tl { top: -8px;  left: -8px;  border-top:    2px solid var(--cyan); border-left:  2px solid var(--cyan); border-radius: 3px 0 0 0; }
+.corner-tr { top: -8px;  right: -8px; border-top:    2px solid var(--cyan); border-right: 2px solid var(--cyan); border-radius: 0 3px 0 0; }
+.corner-bl { bottom: -8px; left: -8px;  border-bottom: 2px solid var(--cyan); border-left:  2px solid var(--cyan); border-radius: 0 0 0 3px; }
+.corner-br { bottom: -8px; right: -8px; border-bottom: 2px solid var(--cyan); border-right: 2px solid var(--cyan); border-radius: 0 0 3px 0; }
+
+/* Scan line effect over photo */
+.profile-photo-frame .scan-line {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.6), transparent);
+  animation: scanDown 3s ease-in-out infinite;
+  z-index: 4;
+  pointer-events: none;
+  border-radius: 0;
+}
+
+@keyframes scanDown {
+  0%   { top: 0%;   opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* ── Profile info beside photo ── */
+.profile-info {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.profile-name {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.profile-name span { color: var(--cyan); }
+
+.profile-title-line {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--violet);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-title-line::before {
+  content: '';
+  width: 20px; height: 1px;
+  background: var(--violet);
+}
+
+.profile-bio-short {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--muted);
+  max-width: 480px;
+  margin-bottom: 24px;
+}
+
+/* ── Stat chips row ── */
+.profile-stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.stat-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0,212,255,0.05);
+  border: 1px solid rgba(0,212,255,0.15);
+  border-radius: 10px;
+  padding: 12px 20px;
+  min-width: 90px;
+  transition: all var(--transition);
+}
+
+.stat-chip:hover {
+  background: rgba(0,212,255,0.1);
+  border-color: var(--cyan);
+  transform: translateY(-3px);
+}
+
+.stat-chip-num {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--cyan);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-chip-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+/* ── Location badge ── */
+.profile-location {
+  position: absolute;
+  top: 28px; right: 40px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  z-index: 2;
+}
+
+.profile-location svg {
+  color: var(--green);
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  #profile-card { padding: 0 24px; }
+
+  .profile-card-inner {
+    flex-direction: column;
+    text-align: center;
+    padding: 36px 28px;
+    gap: 32px;
+  }
+
+  .profile-photo-frame,
+  .profile-photo-frame img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .profile-location { position: static; margin-bottom: 8px; justify-content: center; }
+
+  .profile-stats { justify-content: center; }
+
+  .profile-title-line { justify-content: center; }
+  .profile-title-line::before { display: none; }
+}
+
+
+
+/* ══════════════════════════════════════════
+  ABOUT MINI CARDS ROW
+   ══════════════════════════════════════════ */
+
+.about-cards-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.about-mini-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  transition: border-color var(--transition);
+}
+
+.about-mini-card:hover {
+  border-color: rgba(0, 212, 255, 0.25);
+}
+
+/* ── Card header ── */
+.mini-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.mini-card-icon {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.mini-card-title {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  flex: 1;
+}
+
+.mini-card-badge {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--green);
+  border: 1px solid rgba(0, 255, 136, 0.25);
+  background: rgba(0, 255, 136, 0.06);
+  padding: 2px 7px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+}
+
+/* ══════════════════════════════════════════
+   CURRENTLY LEARNING CARD
+   ══════════════════════════════════════════ */
+
+.learning-items {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.learn-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.learn-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text);
+}
+
+.learn-pct {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+}
+
+/* Color variants */
+.clr-cyan   { color: var(--cyan); }
+.clr-violet { color: var(--violet); }
+.clr-green  { color: var(--green); }
+.clr-amber  { color: var(--amber); }
+
+.learn-track {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.learn-fill {
+  height: 100%;
+  border-radius: 2px;
+  width: 0;
+  transition: width 1.3s var(--ease-out-expo);
+}
+
+/* Fill color variants */
+.clr-cyan-fill   { background: var(--cyan); }
+.clr-violet-fill { background: var(--violet); }
+.clr-green-fill  { background: var(--green); }
+.clr-amber-fill  { background: var(--amber); }
+
+/* ══════════════════════════════════════════
+   JOURNEY TIMELINE CARD
+   ══════════════════════════════════════════ */
+
+.journey-timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.journey-item {
+  display: grid;
+  grid-template-columns: 10px 12px 1fr;
+  gap: 0 10px;
+  position: relative;
+}
+
+.journey-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-top: 3px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Dot states */
+.status-done {
+  background: var(--violet);
+  box-shadow: 0 0 6px rgba(124, 58, 237, 0.5);
+}
+
+.status-active {
+  background: var(--cyan);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.7);
+  animation: activePulse 2s ease-in-out infinite;
+}
+
+.status-next {
+  background: transparent;
+  border: 2px solid var(--muted);
+}
+
+@keyframes activePulse {
+  0%, 100% { box-shadow: 0 0 6px rgba(0, 212, 255, 0.4); }
+  50%       { box-shadow: 0 0 14px rgba(0, 212, 255, 0.9); }
+}
+
+/* Vertical connector line */
+.journey-line {
+  width: 1px;
+  background: linear-gradient(to bottom, rgba(124, 58, 237, 0.4), rgba(0, 212, 255, 0.2));
+  margin: 13px auto 0;
+  min-height: 20px;
+}
+
+.journey-line.last-line {
+  background: linear-gradient(to bottom, rgba(0, 212, 255, 0.2), transparent);
+}
+
+.journey-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding-bottom: 16px;
+}
+
+.journey-label {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.journey-sub {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.journey-date {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--cyan);
+  margin-top: 2px;
+  letter-spacing: 0.05em;
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .about-cards-row {
+    grid-template-columns: 1fr;
+  }
+}

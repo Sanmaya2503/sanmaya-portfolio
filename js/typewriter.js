@@ -12,8 +12,6 @@
     'Data Scientist',
     'ML Engineer',
     'Data Analyst',
-    'AI Engineer',
-    'BI Developer',
   ];
 
   let ri = 0, ci = 0, deleting = false;
