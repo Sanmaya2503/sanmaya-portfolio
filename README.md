@@ -9,6 +9,7 @@
 
 ```
 sanmaya-portfolio/
+|
 ├── index.html          ← Main page (all content lives here)
 ├── css/
 │   ├── reset.css       ← Browser reset
@@ -23,7 +24,11 @@ sanmaya-portfolio/
 │   ├── animations.js   ← Scroll-driven animations
 │   └── nav.js          ← Navbar scroll + mobile drawer
 ├── assets/
-│   └── Sanmaya_Resume.pdf   ← ⬅ Drop your resume PDF here
+│   └──Sanmaya_resume_jun31.pdf  ← ⬅ Drop your resume PDF here
+|   |___sanmayaprofpic.jpg    <-- Drop your profile picture here 
+|
+|---.gitignore
+|
 └── README.md
 ```
 
@@ -74,7 +79,7 @@ Your site will be live at:
 | Change cycling roles | `js/typewriter.js` — edit the `roles` array |
 | Colors / theme | `css/tokens.css` — change hex values at top |
 | Radar chart values | `js/animations.js` — `const data = [...]` |
-| Resume PDF | Replace `assets/Sanmaya_Resume.pdf` |
+| Resume PDF | Replace `assets/Sanmaya_resume_jun31.pdf` |
 | Add a certification | Copy a `.cert-card` block in `index.html` |
 
 ---
@@ -84,7 +89,7 @@ Your site will be live at:
 ```bash
 git add .
 git commit -m "Update: <what you changed>"
-git push
+git push origin main
 ```
 
 GitHub Pages auto-deploys within ~30 seconds.
